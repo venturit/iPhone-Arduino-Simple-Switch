@@ -34,7 +34,7 @@
     [super viewDidLoad];
     rscMgr = [[RscMgr alloc] init]; 
     [rscMgr setDelegate:self];
-
+    var = false;
 }
 
 
@@ -133,21 +133,42 @@
 }
 
 - (void) readBytesAvailable:(UInt32)numBytes {
+    UInt8 rxBuffer[BUFFER_LEN];
+ 
+    if (var == true) {
+        return;
+    }
+  int bytes = [rscMgr read:rxBuffer Length:numBytes];
+
     
-    
-   [rscMgr read:rxBuffer Length:numBytes];
-   
-    NSString *s = [[NSString alloc] initWithBytes:rxBuffer length:numBytes encoding: NSUTF8StringEncoding];
-    
+  NSString *response = [[NSString alloc]initWithFormat:@"%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i --- %i ", 
+                          (int)rxBuffer[0],
+                          (int)rxBuffer[1],
+                          (int)rxBuffer[2],
+                          (int)rxBuffer[3],
+                          (int)rxBuffer[4],
+                          (int)rxBuffer[5],
+                          (int)rxBuffer[6],
+                          (int)rxBuffer[7],
+                          (int)rxBuffer[8],
+                          (int)rxBuffer[9],
+                          (int)rxBuffer[10],
+                          (int)rxBuffer[11],
+                          (int)rxBuffer[12],
+                          (int)rxBuffer[13],
+                          (int)rxBuffer[14],
+                          (int)rxBuffer[15], 
+                            bytes];
     
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
-                                                    message:s
+                                                    message:response
                                                    delegate:nil 
                                           cancelButtonTitle:@"Ok"
                                           otherButtonTitles:nil];
     [alert show];
 
+    var = true;
 }
 
 - (BOOL) rscMessageReceived:(UInt8 *)msg TotalLength:(int)len {

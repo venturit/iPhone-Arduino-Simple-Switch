@@ -14,10 +14,11 @@
 @interface HelloArduinoViewController : UIViewController <RscMgrDelegate> {
     
     RscMgr *rscMgr;
-    UInt8 rxBuffer[BUFFER_LEN];
+    //UInt8 rxBuffer[BUFFER_LEN];
     UInt8 txBuffer[BUFFER_LEN];
 
     UISwitch *toggleSwitch;
+    bool var;
    
 //    UILabel *response;
 }

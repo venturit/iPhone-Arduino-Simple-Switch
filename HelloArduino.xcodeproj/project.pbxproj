@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4AC404BF15D3043A00514FDF /* libRscMgrUniv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC404BE15D3043A00514FDF /* libRscMgrUniv.a */; };
 		C9F5C84513D1ECEB00B631FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F5C84413D1ECEB00B631FA /* UIKit.framework */; };
 		C9F5C84713D1ECEB00B631FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F5C84613D1ECEB00B631FA /* Foundation.framework */; };
 		C9F5C84913D1ECEB00B631FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F5C84813D1ECEB00B631FA /* CoreGraphics.framework */; };
@@ -24,6 +23,7 @@
 		C9F5C87213D1ECEB00B631FA /* HelloArduinoTests.h in Resources */ = {isa = PBXBuildFile; fileRef = C9F5C87113D1ECEB00B631FA /* HelloArduinoTests.h */; };
 		C9F5C87413D1ECEB00B631FA /* HelloArduinoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F5C87313D1ECEB00B631FA /* HelloArduinoTests.m */; };
 		C9F5C88413D2003000B631FA /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F5C88313D2003000B631FA /* ExternalAccessory.framework */; };
+		D12A569415D41ED000E0E8D5 /* libRscMgrUniv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12A569315D41ED000E0E8D5 /* libRscMgrUniv.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4AC404BC15D3042900514FDF /* redparkSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = redparkSerial.h; path = "../../../venturit/circulaide/Redpark Serial SDK 1.3 r203/inc/redparkSerial.h"; sourceTree = "<group>"; };
-		4AC404BD15D3042900514FDF /* RscMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RscMgr.h; path = "../../../venturit/circulaide/Redpark Serial SDK 1.3 r203/inc/RscMgr.h"; sourceTree = "<group>"; };
-		4AC404BE15D3043A00514FDF /* libRscMgrUniv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRscMgrUniv.a; path = "../../../venturit/circulaide/Redpark Serial SDK 1.3 r203/lib/libRscMgrUniv.a"; sourceTree = "<group>"; };
 		C9F5C84013D1ECEB00B631FA /* HelloArduino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloArduino.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F5C84413D1ECEB00B631FA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9F5C84613D1ECEB00B631FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +58,9 @@
 		C9F5C87113D1ECEB00B631FA /* HelloArduinoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloArduinoTests.h; sourceTree = "<group>"; };
 		C9F5C87313D1ECEB00B631FA /* HelloArduinoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloArduinoTests.m; sourceTree = "<group>"; };
 		C9F5C88313D2003000B631FA /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		D12A568E15D41A2200E0E8D5 /* redparkSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = redparkSerial.h; sourceTree = "<group>"; };
+		D12A568F15D41A2200E0E8D5 /* RscMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RscMgr.h; sourceTree = "<group>"; };
+		D12A569315D41ED000E0E8D5 /* libRscMgrUniv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libRscMgrUniv.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				C9F5C84513D1ECEB00B631FA /* UIKit.framework in Frameworks */,
 				C9F5C84713D1ECEB00B631FA /* Foundation.framework in Frameworks */,
 				C9F5C84913D1ECEB00B631FA /* CoreGraphics.framework in Frameworks */,
-				4AC404BF15D3043A00514FDF /* libRscMgrUniv.a in Frameworks */,
+				D12A569415D41ED000E0E8D5 /* libRscMgrUniv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,8 +169,8 @@
 		C9F5C87D13D1F24C00B631FA /* inc */ = {
 			isa = PBXGroup;
 			children = (
-				4AC404BC15D3042900514FDF /* redparkSerial.h */,
-				4AC404BD15D3042900514FDF /* RscMgr.h */,
+				D12A568E15D41A2200E0E8D5 /* redparkSerial.h */,
+				D12A568F15D41A2200E0E8D5 /* RscMgr.h */,
 			);
 			path = inc;
 			sourceTree = "<group>";
@@ -178,7 +178,7 @@
 		C9F5C88013D1F24C00B631FA /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				4AC404BE15D3043A00514FDF /* libRscMgrUniv.a */,
+				D12A569315D41ED000E0E8D5 /* libRscMgrUniv.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -398,6 +398,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 					"\"$(SRCROOT)/../../venturit/circulaide/Redpark Serial SDK 1.3 r203/lib\"",
+					"\"$(SRCROOT)/inc\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -417,6 +418,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 					"\"$(SRCROOT)/../../venturit/circulaide/Redpark Serial SDK 1.3 r203/lib\"",
+					"\"$(SRCROOT)/inc\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
