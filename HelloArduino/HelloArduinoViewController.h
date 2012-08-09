@@ -18,7 +18,10 @@
     UInt8 txBuffer[BUFFER_LEN];
 
     UISwitch *toggleSwitch;
+   
+//    UILabel *response;
 }
+//@property (nonatomic, retain) IBOutlet UILabel *response;
 @property (nonatomic, retain) IBOutlet UISwitch *toggleSwitch;
 - (IBAction)toggleLED:(id)sender;
 
