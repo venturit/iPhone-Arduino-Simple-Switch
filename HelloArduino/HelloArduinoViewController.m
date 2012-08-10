@@ -9,7 +9,7 @@
 #import "HelloArduinoViewController.h"
 
 @implementation HelloArduinoViewController
-@synthesize toggleSwitch;//, response;
+@synthesize toggleSwitch, response;
 
 - (void)dealloc
 {
@@ -35,6 +35,7 @@
     rscMgr = [[RscMgr alloc] init]; 
     [rscMgr setDelegate:self];
     var = false;
+    [response setText:@"Initializing..."];
 }
 
 
@@ -53,49 +54,47 @@
 }
 
 - (IBAction)toggleLED:(id)sender {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
-                                                    message:@"Button Pressed"
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"Ok"
-                                          otherButtonTitles:nil];
-   
+    //UInt8 txBuffer1[1];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
+//                                                    message:@"Button Pressed"
+//                                                   delegate:nil 
+//                                          cancelButtonTitle:@"Ok"
+//                                          otherButtonTitles:nil];
+//   
 
-    if (toggleSwitch.on) { // check the state of the button
-        //send an array
-        txBuffer[0] = 30;
-        txBuffer[1] = true;
-        txBuffer[2] = true;
-        txBuffer[3] = true;
-        txBuffer[4] = true;
-        txBuffer[5] = 30;
-        txBuffer[6] = true;
-        txBuffer[7] = true;
-        txBuffer[8] = true;
-        txBuffer[9] = true;
+    if (toggleSwitch.on) { 
         
+        txBuffer[0] = 160; //KeyValue
+        txBuffer[1] = 21;
+        txBuffer[2] = 31;
+        txBuffer[3] = 41;
+        txBuffer[4] = 51;
+        txBuffer[5] = 62;
+        txBuffer[6] = 71;
+        txBuffer[7] = 81;
+        txBuffer[8] = 91;
+
         
+       
     
     
     } else {
-         //send an array
-        txBuffer[0] = 0;
-        txBuffer[1] = false;
-        txBuffer[2] = false;
-        txBuffer[3] = false;
-        txBuffer[4] = false;
-        txBuffer[5] = 0;
-        txBuffer[6] = false;
-        txBuffer[7] = false;
-        txBuffer[8] = false;
-        txBuffer[9] = false;
+        
+        txBuffer[0] = 110; //KeyValue
+        txBuffer[1] = 20;
+        txBuffer[2] = 30;
+        txBuffer[3] = 40;
+        txBuffer[4] = 50;
+        txBuffer[5] = 65;
+        txBuffer[6] = 70;
+        txBuffer[7] = 80;
+        txBuffer[8] = 90;
+       
+     
     
     }
-    
-    // Send 0 or 1 to the Arduino
-	[rscMgr write:txBuffer Length:10];  
-    
-    [alert show];
+    [rscMgr write:(txBuffer) Length:9];  
+
 }
 
 #pragma mark - RscMgrDelegate methods
@@ -133,42 +132,16 @@
 }
 
 - (void) readBytesAvailable:(UInt32)numBytes {
-    UInt8 rxBuffer[BUFFER_LEN];
- 
-    if (var == true) {
-        return;
-    }
-  int bytes = [rscMgr read:rxBuffer Length:numBytes];
+    
 
+  [rscMgr read:rxBuffer Length:numBytes];
     
-  NSString *response = [[NSString alloc]initWithFormat:@"%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i --- %i ", 
-                          (int)rxBuffer[0],
-                          (int)rxBuffer[1],
-                          (int)rxBuffer[2],
-                          (int)rxBuffer[3],
-                          (int)rxBuffer[4],
-                          (int)rxBuffer[5],
-                          (int)rxBuffer[6],
-                          (int)rxBuffer[7],
-                          (int)rxBuffer[8],
-                          (int)rxBuffer[9],
-                          (int)rxBuffer[10],
-                          (int)rxBuffer[11],
-                          (int)rxBuffer[12],
-                          (int)rxBuffer[13],
-                          (int)rxBuffer[14],
-                          (int)rxBuffer[15], 
-                            bytes];
+//  NSString *output = [[NSString alloc]initWithFormat:@"%i", (int)rxBuffer[0]];
     
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
-                                                    message:response
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"Ok"
-                                          otherButtonTitles:nil];
-    [alert show];
+    if ((int)rxBuffer[0]==122) {
+        [self.response setText:@"Got Milk!"];
+    }    
 
-    var = true;
 }
 
 - (BOOL) rscMessageReceived:(UInt8 *)msg TotalLength:(int)len {

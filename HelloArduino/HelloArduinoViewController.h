@@ -16,13 +16,13 @@
     RscMgr *rscMgr;
     //UInt8 rxBuffer[BUFFER_LEN];
     UInt8 txBuffer[BUFFER_LEN];
-
+    UInt8 rxBuffer[BUFFER_LEN];
     UISwitch *toggleSwitch;
     bool var;
    
-//    UILabel *response;
+    UILabel *response;
 }
-//@property (nonatomic, retain) IBOutlet UILabel *response;
+@property (nonatomic, retain) IBOutlet UILabel *response;
 @property (nonatomic, retain) IBOutlet UISwitch *toggleSwitch;
 - (IBAction)toggleLED:(id)sender;
 
