@@ -9,7 +9,7 @@
 #import "HelloArduinoViewController.h"
 
 @implementation HelloArduinoViewController
-@synthesize toggleSwitch, response;
+@synthesize toggleSwitch, response, input;
 
 - (void)dealloc
 {
@@ -54,13 +54,6 @@
 }
 
 - (IBAction)toggleLED:(id)sender {
-    //UInt8 txBuffer1[1];
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
-//                                                    message:@"Button Pressed"
-//                                                   delegate:nil 
-//                                          cancelButtonTitle:@"Ok"
-//                                          otherButtonTitles:nil];
-//   
 
     if (toggleSwitch.on) { 
         
@@ -131,16 +124,30 @@
     
 }
 
-- (void) readBytesAvailable:(UInt32)numBytes {
+- (void) readBytesAvailable:(UInt32)bytesRead {
     
+    [rscMgr read:rxBuffer Length:bytesRead];
+    
+    NSString *output = [[NSString alloc] initWithBytes:rxBuffer length:bytesRead encoding: NSUTF8StringEncoding];
+    
+    
+    if ([output characterAtIndex:0 == '[' ]) {
+        [input copy:output];
+    }else {
+        [input stringByAppendingString:output];
 
-  [rscMgr read:rxBuffer Length:numBytes];
-    
-//  NSString *output = [[NSString alloc]initWithFormat:@"%i", (int)rxBuffer[0]];
-    
-    if ((int)rxBuffer[0]==122) {
-        [self.response setText:@"Got Milk!"];
-    }    
+        if ([output hasPrefix:@"]"]) {
+            //process data
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
+                                                            message:input
+                                                           delegate:nil 
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        }
+    }
 
 }
 
